@@ -1,0 +1,66 @@
+/* Style for navigator
+navigator {
+    background-color: #3385ff;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    color: #fff;
+    font-size: 20px;
+}
+
+navigator img {
+    height: 30px;
+}
+
+navigator ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+
+navigator li {
+    margin-right: 20px;
+}
+
+navigator a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+navigator ul li a{
+    color: white;
+    font-size: 17px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+
+navigator a.active,a:hover{
+    background: #1b9bff;
+    transition: .5s;
+}
+ */
+/* Style for main */
+main {
+    padding: 50px;
+}
+
+/* Style for footer */
+footer {
+    background-color: #3385ff;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+}
+
+/* Fullscreen and no gaps */
+html,
+body {
+height: 100%;
+margin: 0;
+padding: 0;
+}
