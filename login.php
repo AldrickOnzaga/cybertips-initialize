@@ -34,7 +34,7 @@
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
-            <a href="index.php"><img class="logo" src="img/cyb6.png" alt="CYBERTIPS Logo"></a>
+            <img id="logo" class="logo" src="img/cyb6.png" alt="CYBERTIPS Logo">
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About</a></li>
@@ -60,5 +60,13 @@
         <footer>
             <p>Created by Aldrick</p>
         </footer>
+
+        <script>
+            var img = document.getElementById("logo");
+            img.addEventListener("click", function() {
+                window.location.href = "http://localhost/cybertips-initialize/index.php";
+            });
+        </script>
+        
     </body>
 </html>
