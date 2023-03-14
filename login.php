@@ -6,13 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style1.css">
         <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="css/credential.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
     <?php
 
     // Check if the form was submitted
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    /*if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Get the username and password from the form data
         $username = $_POST["username"];
@@ -26,9 +27,8 @@
         // to a protected page
         header("Location: protected.php");
         exit;
-    }
+    }*/
     ?>
-
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
@@ -45,16 +45,22 @@
         </nav>
         
         <main>
-            <h1>Login</h1>
-            <form method="post" action="login.php">
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username">
-                <br><br>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password">
-                <br><br>
-                <input type="submit" value="Login">
-            </form>
+            <div class="form-container">
+                <form action="" method="post">
+                        <h3>login now</h3>
+                        <?php
+                            if(isset($error)){
+                                foreach($error as $error){
+                                echo '<span class="error-msg">'.$error.'</span>';
+                            };
+                        };
+                        ?>
+                        <input type="email" name="email" required placeholder="Email">
+                        <input type="password" name="password" required placeholder="Password">
+                        <input type="submit" name="submit" value="login now" class="form-btn">
+                        <p>don't have an account? <a href="register.php">register now</a></p>
+                </form>
+            </div>
         </main>
         
         <footer>
