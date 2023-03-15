@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/nav.css">
         <link rel="stylesheet" href="css/credential.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <!--new code-->
     </head>
     <body>
     <?php
