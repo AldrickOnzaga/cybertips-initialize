@@ -40,7 +40,7 @@
             }elseif($row['user_type'] == 'user'){
 
                 $_SESSION['user_name'] = $row['name'];
-                header('location:userdash.php');
+                header('location:index.php');
 
             }
             
