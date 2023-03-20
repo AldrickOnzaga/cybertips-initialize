@@ -25,13 +25,14 @@
                 if(isset($_SESSION['admin_name'])) {
                     echo '<li><a href="admin.php">'.$_SESSION['admin_name'].'</a></li>';
                 } elseif(isset($_SESSION['user_name'])) {
-                    echo '<li class="dropdown">';
+                    echo '<li><a href="user.php">'.$_SESSION['user_name'].'</a></li>';
+                    /*echo '<li class="dropdown">';
                     echo '<a href="#" class="dropbtn">'.$_SESSION['user_name'].' <i class="fa fa-caret-down"></i></a>';
                     echo '<div class="dropdown-content">';
                     echo '<a href="userdash.php">Dashboard</a>';
                     echo '<a href="logout.php">Logout</a>';
                     echo '</div>';
-                    echo '</li>';
+                    echo '</li>';*/
                 } else {
                     echo '<li><a href="login.php">Log in</a></li>';
                 }
@@ -56,7 +57,7 @@
             });
         </script>
         <script>
-            /* JavaScript to close the dropdown menu when clicking outside of it */
+            /* JavaScript to close the dropdown menu when clicking outside of it 
         window.onclick = function(event) {
             if (!event.target.matches('.dropbtn')) {
                 var dropdowns = document.getElementsByClassName("dropdown-content");
@@ -67,7 +68,7 @@
                     }
                 }
             }
-        }
+        }*/
         </script>
     </body>
 </html>

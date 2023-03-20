@@ -1,3 +1,13 @@
+<?php
+
+    session_start();
+
+    if(isset($_SESSION['admin_name'])){
+        $name = $_SESSION['admin_name'];
+    }else{
+        header('location:login.php');
+}?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +15,7 @@
 </head>
 <body>
 
-    <h1>Welcome, Admin!</h1>
+    <h1>Welcome, <?php echo $name; ?>!</h1>
 
     <!-- Add your admin dashboard content here -->
 
