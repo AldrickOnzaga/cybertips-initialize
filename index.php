@@ -43,10 +43,6 @@
         <main>
             <h1>Welcome to CYBERTIPS</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquet ipsum sit amet mauris aliquet suscipit. Aliquam a luctus dolor, at pellentesque augue. Sed id erat justo. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Praesent accumsan, velit quis egestas fermentum, urna velit interdum enim, ut ultricies eros tellus a dolor. Sed eu sagittis felis. Suspendisse ut augue ipsum.</p>
-            
-            <form action="logout.php" method="post">
-                <input type="submit" value="Logout">
-            </form>
         </main>
         
         <footer>
