@@ -1,14 +1,8 @@
 <?php
 
-    @include 'config.php';
+    @include_once 'config.php';
 
-    session_start();
-
-    if(isset($_SESSION['admin_name'])){
-        $name = $_SESSION['admin_name'];
-    }else{
-        header('location:login.php');
-}?>
+?>
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +19,8 @@
                 <img id="logo" class="logo" src="img/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="admin.php">Dashboard</a></li>
+                    <li><a href="CM.php">Content managment</a></li>
+                    <li><a href="pushnotif.php">Push Notification</a></li>
                     <li><a href="index.php">CYBERTIPS</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
@@ -53,7 +49,7 @@
                     <input type="text" name="name" required placeholder="Name">
                     <input type="email" name="email" required placeholder="Email">
                     <input type="password" name="password" required placeholder="Password">
-                    <input type="password" name="cpassword" required placeholder="Password">
+                    <input type="password" name="cpassword" required placeholder="Enter Password again">
                     <select name="user_type">
                         <option value="user">user</option>
                         <option value="admin">admin</option>
@@ -78,15 +74,16 @@
                         </thead>
                         <?php
                         
-                        $sql="SELECT * FROM user_list";
-
-                        $result=mysqli_query($conn, $sql);
-
-                        if($result){
+                        $sql = "SELECT * FROM user_list";
+                        $stmt = mysqli_prepare($conn, $sql);
+                        if ($stmt) {
+                            mysqli_stmt_execute($stmt);
+                            $result = mysqli_stmt_get_result($stmt);
                             if(mysqli_num_rows($result)>0){
                                 while($row=mysqli_fetch_assoc($result)){
                                     $id=$row['id'];
-
+                                    // process the row data
+                                    
                         ?>
                         <tbody>
                             <tr>
@@ -108,6 +105,7 @@
                         }else{
                             echo '<h2 class=text-danger>Data not found</h2>';
                         }
+                        mysqli_stmt_close($stmt);
                         }
                         ?>
                         </tbody>

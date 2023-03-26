@@ -1,41 +1,43 @@
 <?php
-
 	@include 'config.php';
 
-// Get the form data
-	$name = mysqli_real_escape_string($conn, $_POST['name']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	// Get the form data
+	$name = $_POST['name'];
+	$email = $_POST['email'];
 	$pass = md5($_POST['password']);
 	$cpass = md5($_POST['cpassword']);
 	$user_type = $_POST['user_type'];
-	
-	$select = " SELECT * FROM user_list WHERE email = '$email' && password = '$pass'";
-	$result = mysqli_query($conn, $select);
-	
-	if(mysqli_num_rows($result) > 0){
 
-		$error[] = 'user already exist!';
-	
-	}else{
-	
-		if($pass != $cpass){
-			$error[] = 'password not matched!';
-		}else{
-			$insert = "INSERT INTO user_list(name, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
-			mysqli_query($conn, $insert);
-			header('location:admin.php');
-		}
-	}
-	
-	if ($conn->query($insert_personal_info) === TRUE) {
-		//echo "Valid ID inserted successfully.";
-        echo "<script>alert('Valid ID inserted successfully.')</script>";
-        echo "<script>window.location.href = 'index.php';</script>";
-        header("Location: index.php");
+    // Validate input
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error[] = 'Invalid email format';
+    }
+    if (strlen($password) < 8) {
+        $error[] = 'Password must be at least 8 characters long';
+    }
+    if ($password !== $confirm_password) {
+        $error[] = 'Passwords do not match';
+    }
+
+    // Check if user already exists
+    $stmt = $conn->prepare("SELECT * FROM user_list WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $error[] = 'User already exists';
+    } else {
+        // Hash password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Insert new user
+        $stmt = $conn->prepare("INSERT INTO user_list(name, email, password, user_type) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $email, $hashed_password, $user_type);
+        $stmt->execute();
+        header('location: admin.php');
         exit();
-	} else {
-		echo "Error: " . $insert_personal_info . "<br>" . $conn->error;
-	}
+    }
 
-	mysqli_close($conn);
+	$conn->close();
 ?>

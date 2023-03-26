@@ -1,36 +1,50 @@
 <!--connection and program-->
 <?php
 
-@include 'config.php';
+require_once 'config.php';
 
-if(isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 
-$name = mysqli_real_escape_string($conn, $_POST['name']);
-$email = mysqli_real_escape_string($conn, $_POST['email']);
-$pass = md5($_POST['password']);
-$cpass = md5($_POST['cpassword']);
-$user_type = $_POST['user_type'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['cpassword'];
+    $user_type = $_POST['user_type'];
 
-$select = " SELECT * FROM user_list WHERE email = '$email' && password = '$pass' ";
+    // Validate input
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error[] = 'Invalid email format';
+    }
+    if (strlen($password) < 8) {
+        $error[] = 'Password must be at least 8 characters long';
+    }
+    if ($password !== $confirm_password) {
+        $error[] = 'Passwords do not match';
+    }
 
-$result = mysqli_query($conn, $select);
+    // Check if user already exists
+    $stmt = $conn->prepare("SELECT * FROM user_list WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-if(mysqli_num_rows($result) > 0){
+    if ($result->num_rows > 0) {
+        $error[] = 'User already exists';
+    } else {
+        // Hash password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $error[] = 'user already exist!';
-
-}else{
-
-    if($pass != $cpass){
-        $error[] = 'password not matched!';
-    }else{
-        $insert = "INSERT INTO user_list(name, email, password, user_type) VALUES('$name','$email','$pass','$user_type')";
-        mysqli_query($conn, $insert);
-        header('location:login.php');
+        // Insert new user
+        $stmt = $conn->prepare("INSERT INTO user_list(name, email, password, user_type) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("ssss", $name, $email, $hashed_password, $user_type);
+        $stmt->execute();
+        header('location: login.php');
+        exit();
     }
 }
-};
+
 ?>
+
 
 <!DOCTYPE html>
 <html>
