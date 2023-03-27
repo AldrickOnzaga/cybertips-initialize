@@ -51,7 +51,9 @@
             <form action="logout.php" method="post">
                 <input type="submit" value="Logout">
             </form>
-
         </main>
+        <footer>
+                <p>CYBERTIPS</p>
+        </footer>
     </body>
 </html>

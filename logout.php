@@ -7,6 +7,9 @@ $_SESSION = array();
 // Destroy the session
 session_destroy();
 
+// Regenerate session id
+session_regenerate_id();
+
 // Redirect to the index.php page
 header("Location: index.php");
 exit;

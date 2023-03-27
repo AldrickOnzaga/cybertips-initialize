@@ -1,12 +1,11 @@
 <?php
-	@include 'config.php';
+	@include_once 'config.php';
 
-	// Get the form data
 	$name = $_POST['name'];
-	$email = $_POST['email'];
-	$pass = md5($_POST['password']);
-	$cpass = md5($_POST['cpassword']);
-	$user_type = $_POST['user_type'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['cpassword'];
+    $user_type = $_POST['user_type'];
 
     // Validate input
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -38,6 +37,5 @@
         header('location: admin.php');
         exit();
     }
-
-	$conn->close();
+    $conn->close();
 ?>

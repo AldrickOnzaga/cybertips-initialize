@@ -11,45 +11,40 @@
     </head>
     <body>
     <?php
+@include 'config.php';
+session_start();
 
-        @include 'config.php';
+if(isset($_POST['submit'])){
 
-        session_start();
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = $_POST['password'];
 
-        if(isset($_POST['submit'])){
+    $select = "SELECT * FROM user_list WHERE email = '$email'";
+    $result = mysqli_query($conn, $select);
 
-        //$name = mysqli_real_escape_string($conn, $_POST['name']);
-        $email = mysqli_real_escape_string($conn, $_POST['email']);
-        $pass = md5($_POST['password']);
-        //$cpass = md5($_POST['cpassword']);
-        //$user_type = $_POST['user_type'];
+    if(mysqli_num_rows($result) > 0){
+        $row = mysqli_fetch_array($result);
+        $hashed_password = $row['password'];
 
-        $select = " SELECT * FROM user_list WHERE email = '$email' && password = '$pass' ";
-
-        $result = mysqli_query($conn, $select);
-
-        if(mysqli_num_rows($result) > 0){
-
-            $row = mysqli_fetch_array($result);
-
+        if(password_verify($password, $hashed_password)){
             if($row['user_type'] == 'admin'){
-
                 $_SESSION['admin_name'] = $row['name'];
                 header('location:admin.php');
-
             }elseif($row['user_type'] == 'user'){
-
                 $_SESSION['user_name'] = $row['name'];
                 header('location:index.php');
-
             }
-            
         }else{
-            $error[] = 'incorrect email or password. Please try again';
+            $error[] = 'Incorrect email or password. Please try again';
         }
+    }else{
+        $error[] = 'Incorrect email or password. Please try again';
+    }
+}
+?>
 
-        };
-    ?>
+<!-- rest of your HTML code -->
+
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">

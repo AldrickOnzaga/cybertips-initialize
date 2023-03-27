@@ -1,6 +1,7 @@
 <?php
 
-    @include 'config.php';
+// Include database configuration
+@include_once 'config.php';
 
 ?>
 
@@ -26,7 +27,16 @@
                 </ul>
         </div>
         <div class="body">
-            <h1>POST</h1>
+            <h1>Content Management</h1>
+            <div class="upload-container">
+                <form action="upload.php" method="post" enctype="multipart/form-data">
+                    <label for="image-upload">Select an image to upload:</label>
+                    <input type="file" id="image-upload" name="image" accept=".jpg, .jpeg, .png" required>
+                    <label for="image-description">Image description:</label>
+                    <textarea id="image-description" name="description" rows="4" required></textarea>
+                    <button type="submit" name="upload">Upload</button>
+                </form>
+            </div>
         </div>
         <footer>
                 <p>CYBERTIPS</p>

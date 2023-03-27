@@ -1,3 +1,6 @@
+<?php
+    @include_once 'config.php';
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -7,6 +10,7 @@
         <link rel="stylesheet" href="css/style1.css">
         <link rel="stylesheet" href="css/nav.css">
         <link rel="stylesheet" href="css/ddmenu.css">
+        <link rel="stylesheet" href="css/view.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -44,8 +48,26 @@
         <main>
             <h1>Welcome to CYBERTIPS</h1>
             <p>This website will be use for increasing the awareness of the student of the Fort Bonifacio Senior HighSchool</p>
-        </main>
+
+            <!-- here is for content management -->
+
+            
+            <div id="display-image">
+                <?php
+                $query = " select * from cm ";
+                $result = mysqli_query($conn, $query);
         
+                while ($data = mysqli_fetch_assoc($result)) {
+                ?>
+                    <img src="./img/<?php echo $data['img']; ?>">
+        
+                <?php
+                }
+                ?>
+            </div>
+        
+        </main>
+
         <footer>
             <p>Created by Aldrick</p>
         </footer>
