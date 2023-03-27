@@ -1,0 +1,15 @@
+#display-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items:center;
+  }
+  
+  #display-image img {
+    width: 200px;
+    height: auto;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
