@@ -51,21 +51,23 @@
 
             <!-- here is for content management -->
 
-            
-            <div id="display-image">
-                <?php
-                $query = " select * from cm ";
-                $result = mysqli_query($conn, $query);
-        
-                while ($data = mysqli_fetch_assoc($result)) {
-                ?>
-                    <img src="./img/<?php echo $data['img']; ?>">
-        
-                <?php
-                }
-                ?>
+            <div id="slideshow">
+                <div id="display-image">
+                    <?php
+                    $query = "select * from cm";
+                    $result = mysqli_query($conn, $query);
+
+                    while ($data = mysqli_fetch_assoc($result)) {
+                        echo '<img src="./img/' . $data['img'] . '">';
+                    }
+                    ?>
+                </div>
+                <div class="controls">
+                    <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+                    <button class="next" onclick="plusSlides(1)">&#10095;</button>
+                </div>
             </div>
-        
+
         </main>
 
         <footer>
@@ -78,19 +80,30 @@
                 window.location.href = "http://localhost/cybertips-initialize/index.php";
             });
         </script>
+
         <script>
-            /* JavaScript to close the dropdown menu when clicking outside of it 
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.style.display === 'block') {
-                        openDropdown.style.display = 'none';
-                    }
-                }
+            var slideIndex = 1;
+            showSlides(slideIndex);
+
+            function plusSlides(n) {
+                showSlides(slideIndex += n);
             }
-        }*/
+
+            function showSlides(n) {
+                var i;
+                var slides = document.getElementsByTagName("img");
+                if (n > slides.length) {
+                    slideIndex = 1;
+                }
+                if (n < 1) {
+                    slideIndex = slides.length;
+                }
+                for (i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+                slides[slideIndex - 1].style.display = "block";
+            }
         </script>
+
     </body>
 </html>
