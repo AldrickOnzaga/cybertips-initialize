@@ -1,7 +1,7 @@
 #display-image img {
   display: none;
   max-width: 100%;
-  height: auto;
+  height: 500px;
 }
 
 #display-image img:first-child {
