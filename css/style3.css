@@ -1,0 +1,18 @@
+.parangrap {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .parangrap h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .parangrap p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #555;
+  }
+  
