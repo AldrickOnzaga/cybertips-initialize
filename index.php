@@ -45,21 +45,23 @@
         </nav>
         
         <main>
-            <h1>Welcome to CYBERTIPS</h1>
-            <p>This website will be use for increasing the awareness of the student of the Fort Bonifacio Senior HighSchool</p>
+                <h1>Welcome to CYBERTIPS</h1>
+                <p>This website will be use for increasing the awareness of the student of the Fort Bonifacio Senior HighSchool</p>
 
             <!-- here is for content management -->
 
             <div id="slideshow">
                 <div id="display-image">
-                    <?php
-                    $query = "select * from cm";
-                    $result = mysqli_query($conn, $query);
+                        <?php
+                        $query = "select * from cm";
+                        $result = mysqli_query($conn, $query);
 
-                    while ($data = mysqli_fetch_assoc($result)) {
-                        echo '<img src="./img/' . $data['img'] . '">';
-                    }
-                    ?>
+                        while ($data = mysqli_fetch_assoc($result)) {
+                        echo '<img src="./img/' . $data['img'] . '" data-description="' . $data['description'] . '">';
+                        }
+                        ?>
+                </div>
+                <div id="display-description">
                 </div>
                 <div class="controls">
                     <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
@@ -80,29 +82,31 @@
             });
         </script>
 
-        <script>
-            var slideIndex = 1;
-            showSlides(slideIndex);
+<script>
+  var slideIndex = 1;
+  showSlides(slideIndex);
 
-            function plusSlides(n) {
-                showSlides(slideIndex += n);
-            }
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
 
-            function showSlides(n) {
-                var i;
-                var slides = document.getElementsByTagName("img");
-                if (n > slides.length) {
-                    slideIndex = 1;
-                }
-                if (n < 1) {
-                    slideIndex = slides.length;
-                }
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slides[slideIndex - 1].style.display = "block";
-            }
-        </script>
+  function showSlides(n) {
+    var i;
+    var slides = document.querySelectorAll('#display-image img');
+    var descriptions = document.getElementById('display-description');
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    slides[slideIndex - 1].style.display = "block";
+    descriptions.innerHTML = slides[slideIndex - 1].getAttribute('data-description');
+  }
+</script>
 
     </body>
 </html>

@@ -16,7 +16,7 @@
     </head>
     <body>
         <div class="menu">
-                <img id="logo" class="logo" src="img/cyb6.png" alt="CYBERTIPS Logo">
+                <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="admin.php">Dashboard</a></li>
                     <li><a href="CM.php">Content managment</a></li>

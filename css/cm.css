@@ -31,3 +31,28 @@
     background-color: #2980b9;
   }
   
+  .textarea-container {
+    position: relative;
+  }
+  
+  .word-count {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 12px;
+  }
+  
+  #image-description {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  #image-description:focus {
+    outline: none;
+    border-color: #0077cc;
+  }
+  

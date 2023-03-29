@@ -29,13 +29,16 @@
         <div class="body">
             <h1>Content Management</h1>
             <div class="upload-container">
-                <form action="upload.php" method="post" enctype="multipart/form-data">
-                    <label for="image-upload">Select an image to upload:</label>
-                    <input type="file" id="image-upload" name="image" accept=".jpg, .jpeg, .png" required>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <label for="image-upload">Select an image to upload:</label>
+                <input type="file" id="image-upload" name="image" accept=".jpg, .jpeg, .png" required>
+                    <div class="textarea-container">
                     <label for="image-description">Image description:</label>
-                    <textarea id="image-description" name="description" rows="4" required></textarea>
-                    <button type="submit" name="upload">Upload</button>
-                </form>
+                    <textarea id="image-description" name="description" rows="4" maxlength="100" required></textarea>
+                    <span class="word-count">0 / 100</span>
+                </div>
+                <button type="submit" name="upload">Upload</button>
+            </form>
             </div>
         </div>
         <footer>
@@ -47,6 +50,16 @@
             menuBtn.addEventListener('click', () => {
                 menu.classList.toggle('active');
             });
+        </script>
+        <script>
+             const textarea = document.getElementById('image-description');
+            const wordCountSpan = document.querySelector('.word-count');
+
+            textarea.addEventListener('input', function() {
+            const wordCount = textarea.value.trim().split(/\s+/).length;
+            wordCountSpan.textContent = wordCount + ' / 100';
+            });
+
         </script>
     </body>
 </html>
