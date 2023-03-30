@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style1.css">
         <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="css/profile.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 	</head>
 	<body>
@@ -45,6 +46,27 @@
 			<p>
                 We are CYBERTIPS, a website dedicated to providing information about online safety and security. Our mission is to help educate people about the risks of the internet and provide tips and resources to stay safe online.
             </p>
+            <br></br>
+            <div class="profile-container">
+                <div class="profile">
+                            <img src="img/laorden.png" alt="Aldrick Onzaga">
+                            <p>Aldrick C. Onzaga</p>
+                            <p>Leader</p>
+                            <p>Main programmer</p>
+                </div>
+                <div class="profile">
+                            <img src="img/onzaga.jpg" alt="Aldrick Onzaga">
+                            <p>Aldrick C. Onzaga</p>
+                            <p>Leader</p>
+                            <p>Main programmer</p>
+                </div>
+                <div class="profile">
+                            <img src="img/master.jpg" alt="Aldrick Onzaga">
+                            <p>Aldrick C. Onzaga</p>
+                            <p>Leader</p>
+                            <p>Main programmer</p>
+                </div>
+            </div>
 		</main>
 
 		<footer>

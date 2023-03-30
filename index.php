@@ -10,7 +10,8 @@
         <link rel="stylesheet" href="css/style1.css">
         <link rel="stylesheet" href="css/nav.css">
         <link rel="stylesheet" href="css/ddmenu.css">
-        <link rel="stylesheet" href="css/view.css">
+        <link rel="stylesheet" href="css/slideshow.css">
+        <link rel="stylesheet" href="css/content.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -29,13 +30,6 @@
                     echo '<li><a href="admin.php">'.$_SESSION['admin_name'].'</a></li>';
                 } elseif(isset($_SESSION['user_name'])) {
                     echo '<li><a href="user.php">'.$_SESSION['user_name'].'</a></li>';
-                    /*echo '<li class="dropdown">';
-                    echo '<a href="#" class="dropbtn">'.$_SESSION['user_name'].' <i class="fa fa-caret-down"></i></a>';
-                    echo '<div class="dropdown-content">';
-                    echo '<a href="userdash.php">Dashboard</a>';
-                    echo '<a href="logout.php">Logout</a>';
-                    echo '</div>';
-                    echo '</li>';*/
                 } else {
                     echo '<li><a href="login.php">Log in</a></li>';
                 }
@@ -45,29 +39,36 @@
         </nav>
         
         <main>
-                <h1>Welcome to CYBERTIPS</h1>
-                <p>This website will be use for increasing the awareness of the student of the Fort Bonifacio Senior HighSchool</p>
+            <h1>Welcome to CYBERTIPS</h1>
+            <p>This website will be use for increasing the awareness of the student of the Fort Bonifacio Senior HighSchool</p>
+            <br></br    >
 
-            <!-- here is for content management -->
-
-            <div id="slideshow">
-                <div id="display-image">
+            <div class="outer-container">
+                <div class="inner-container1">
+                    <label style="font-size: 2rem; font-weight: bold;">Announcement</label>
+                    <div class="controls">
+                        <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
+                        <button class="next" onclick="plusSlides(1)">&#10095;</button>
+                    </div>
+                    <br></br>
+                    <div id="display-image">
                         <?php
                         $query = "select * from cm";
                         $result = mysqli_query($conn, $query);
 
                         while ($data = mysqli_fetch_assoc($result)) {
-                        echo '<img src="./img/' . $data['img'] . '" data-description="' . $data['description'] . '">';
+                            echo '<img src="./img/' . $data['img'] . '" data-description="' . $data['description'] . '">';
                         }
                         ?>
+                    </div>
+                    <div id="display-description"></div>
+                    <button class="read-more" onclick="window.location.href=\'full.php?image=' . $data['img'] . '\'">Read</button>
                 </div>
-                <div id="display-description">
-                </div>
-                <div class="controls">
-                    <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-                    <button class="next" onclick="plusSlides(1)">&#10095;</button>
+                <div class="inner-container1">
+                    <p>Content 2</p>
                 </div>
             </div>
+
 
         </main>
 
