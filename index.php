@@ -50,19 +50,17 @@
                         <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
                         <button class="next" onclick="plusSlides(1)">&#10095;</button>
                     </div>
-                    <br></br>
                     <div id="display-image">
                         <?php
                         $query = "select * from cm";
                         $result = mysqli_query($conn, $query);
 
                         while ($data = mysqli_fetch_assoc($result)) {
-                            echo '<img src="./img/' . $data['img'] . '" data-description="' . $data['description'] . '">';
+                            echo '<img src="./img/' . $data['img'] . '"data-description="' . $data['description'] . '">';
                         }
                         ?>
                     </div>
                     <div id="display-description"></div>
-                    <button class="read-more" onclick="window.location.href=\'full.php?image=' . $data['img'] . '\'">Read</button>
                 </div>
                 <div class="inner-container1">
                     <p>Content 2</p>

@@ -44,6 +44,7 @@
         <footer>
                 <p>CYBERTIPS</p>
         </footer>
+        
         <script>
             const menu = document.querySelector('.menu');
             const menuBtn = document.querySelector('.menu-btn');
@@ -51,6 +52,7 @@
                 menu.classList.toggle('active');
             });
         </script>
+
         <script>
              const textarea = document.getElementById('image-description');
             const wordCountSpan = document.querySelector('.word-count');

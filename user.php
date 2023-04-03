@@ -16,7 +16,7 @@
                 <label for="check" class="checkbtn">
                     <i class="fas fa-bars"></i>
                 </label>
-                <img id="logo" class="logo" src="img/cyb6.png" alt="CYBERTIPS Logo">
+                <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="index.php">Home</a></li>
                     <li><a href="about.php">About</a></li>

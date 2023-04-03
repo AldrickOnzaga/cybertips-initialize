@@ -35,6 +35,12 @@
                     document.getElementById("add-user-popup").style.display = "block";
                 }
             </script>
+            <!-- search  -->
+            <form action="" method="post">
+                <input type="text" name="search_query" placeholder="Search...">
+                <input type="submit" name="search" value="Search">
+            </form>
+            <!-- add user -->
             <div id="add-user-popup" style="display: none;">
                 <h2>Add employee</h2>
                 <form action="insert.php" method="post">
@@ -58,6 +64,7 @@
                 </form>
                 <button onclick="document.getElementById('add-user-popup').style.display='none';">Close</button>
             </div>
+            <!-- table -->
             <div class="table-container">
                 <div class="table-wrapper">
                     <table>
