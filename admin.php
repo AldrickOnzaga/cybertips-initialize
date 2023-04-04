@@ -15,16 +15,19 @@
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
+        <!-- Menu -->
         <div class="menu">
                 <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="admin.php">Dashboard</a></li>
-                    <li><a href="CM.php">Content managment</a></li>
+                    <li><a href="cm.php">Announcement managment</a></li>
+                    <li><a href="modules.php">Modules management</a></li>
                     <li><a href="pushnotif.php">Push Notification</a></li>
                     <li><a href="index.php">CYBERTIPS</a></li>
                     <li><a href="logout.php">Logout</a></li>
                 </ul>
         </div>
+        <!-- body -->
         <div class="body">
         <h1>
                 dashboard
@@ -35,12 +38,6 @@
                     document.getElementById("add-user-popup").style.display = "block";
                 }
             </script>
-            <!-- search  -->
-            <!-- <form action="" method="post">
-                <input type="text" name="search_query" placeholder="Search...">
-                <input type="submit" name="search" value="Search">
-            </form> -->
-            <!-- add user -->
             <div id="add-user-popup" style="display: none;">
                 <h2>Add employee</h2>
                 <form action="insert.php" method="post">

@@ -62,8 +62,32 @@
                     </div>
                     <div id="display-description"></div>
                 </div>
-                <div class="inner-container1">
-                    <p>Content 2</p>
+                <div class="inner-container2">
+                    <label style="font-size: 2rem; font-weight: bold;">Modules</label>
+                    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Document</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Query database for documents
+                        $query = "SELECT * FROM documents";
+                        $result = mysqli_query($conn, $query);
+
+                        // Loop through documents and display in table rows
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td>" . $row['title'] . "</td>";
+                            echo "<td><a href='documents/" . $row['document'] . "' target='_blank'>" . $row['document'] . "</a></td>";
+                            echo "</tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
                 </div>
             </div>
 

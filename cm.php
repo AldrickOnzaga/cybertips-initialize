@@ -20,7 +20,8 @@
                 <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="admin.php">Dashboard</a></li>
-                    <li><a href="CM.php">Content managment</a></li>
+                    <li><a href="cm.php">Announcement managment</a></li>
+                    <li><a href="modules.php">Modules management</a></li>
                     <li><a href="pushnotif.php">Push Notification</a></li>
                     <li><a href="index.php">CYBERTIPS</a></li>
                     <li><a href="logout.php">Logout</a></li>
@@ -40,6 +41,7 @@
                 <button type="submit" name="upload">Upload</button>
             </form>
             </div>
+            <!-- table -->
             <div class="table-container">
                 <div class="table-wrapper">
                 <table>
