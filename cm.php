@@ -12,7 +12,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/table2.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -68,11 +68,11 @@
                         ?>
                         <tr>
                             <td><?php echo $id; ?></td>
-                            <td><img src="img/<?php echo $image; ?>" alt="<?php echo $description; ?>"></td>
+                            <td class="image"><img src="img/<?php echo $image; ?>" alt="<?php echo $description; ?>"></td>
                             <td><?php echo $description; ?></td>
                             <td>
-                            <a href="edit.php?id=<?php echo $id; ?>">Edit</a> |
-                            <a href="delete.php?id=<?php echo $id; ?>">Delete</a>
+                            <button class="btn btn-primary"><a href="update_cm.php? updateid=<?php echo $row['id'];?>" class="text-light">Update</a></button> |
+                            <button class="btn btn-danger"><a href="delete_cm.php? deleteid=<?php echo $row['id'];?>"onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
                             </td>
                         </tr>
                         <?php } ?>

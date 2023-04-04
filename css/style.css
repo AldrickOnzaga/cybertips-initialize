@@ -64,25 +64,27 @@
   }
   
   /* Style for body */
+.body {
+  position: absolute;
+  top: 0;
+  left: 20%; /* adjust this value to move the body to the desired position */
+  width: 80%; /* subtract the menu width from the body width */
+  height: 100%;
+  background-color: #f2f2f2;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+@media only screen and (max-width: 600px) {
   .body {
-    position: absolute;
-    top: 0;
-    left: 20%; /* adjust this value to move the body to the desired position */
-    width: 80%; /* subtract the menu width from the body width */
-    height: 100%;
-    background-color: #f2f2f2;
-    /*padding: 20px;*/
-    box-sizing: border-box;
+    position: relative;
+    left: 0;
+    width: 100%;
+    padding: 20px 10px;
   }
-  
-  @media only screen and (max-width: 600px) {
-    .body {
-      position: relative;
-      left: 0;
-      width: 100%;
-      padding: 20px 10px;
-    }
-  }
+}
+
   
   /* Style for footer */
   footer {
