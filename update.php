@@ -68,7 +68,7 @@
             </ul>
         </div>
         <div class="body">
-            <h1>POST</h1>
+            <h1>UPDATE</h1>
             <div class="form-container">
                 <form method="POST">
                     <label for="name">Name:</label>

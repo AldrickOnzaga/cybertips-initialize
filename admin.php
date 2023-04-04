@@ -36,10 +36,10 @@
                 }
             </script>
             <!-- search  -->
-            <form action="" method="post">
+            <!-- <form action="" method="post">
                 <input type="text" name="search_query" placeholder="Search...">
                 <input type="submit" name="search" value="Search">
-            </form>
+            </form> -->
             <!-- add user -->
             <div id="add-user-popup" style="display: none;">
                 <h2>Add employee</h2>

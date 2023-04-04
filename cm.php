@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="menu">
-                <img id="logo" class="logo" src="img/cyb6.png" alt="CYBERTIPS Logo">
+                <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="admin.php">Dashboard</a></li>
                     <li><a href="CM.php">Content managment</a></li>
@@ -40,6 +40,46 @@
                 <button type="submit" name="upload">Upload</button>
             </form>
             </div>
+            <div class="table-container">
+                <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Include database configuration
+                        @include_once 'config.php';
+
+                        // Query to retrieve uploaded images
+                        $query = "SELECT * FROM cm";
+                        $result = mysqli_query($conn, $query);
+
+                        // Loop through results and display each row as a table row
+                        while ($row = mysqli_fetch_assoc($result)) {
+                        $id = $row['id'];
+                        $image = $row['img'];
+                        $description = $row['description'];
+                        ?>
+                        <tr>
+                            <td><?php echo $id; ?></td>
+                            <td><img src="img/<?php echo $image; ?>" alt="<?php echo $description; ?>"></td>
+                            <td><?php echo $description; ?></td>
+                            <td>
+                            <a href="edit.php?id=<?php echo $id; ?>">Edit</a> |
+                            <a href="delete.php?id=<?php echo $id; ?>">Delete</a>
+                            </td>
+                        </tr>
+                        <?php } ?>
+                    </tbody>
+                </table>
+                </div>
+            </div>    
         </div>
         <footer>
                 <p>CYBERTIPS</p>
