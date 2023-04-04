@@ -1,6 +1,6 @@
 <?php
 
-    @include_once 'config.php';
+    include_once 'config.php';
 
 ?>
 
@@ -75,8 +75,7 @@
                                 <th>Email</th>
                                 <th>Password</th>
                                 <th>User_type</th>
-                                <th></th>
-                                <th></th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <?php
@@ -100,9 +99,7 @@
                             <td><?php echo $row['password'];?></td>
                             <td><?php echo $row['user_type'];?></td>
                             <td>
-                            <button class="btn btn-primary"><a href="update.php? updateid=<?php echo $row['id'];?>" class="text-light">Update</a></button>
-                            </td>
-                            <td>
+                            <button class="btn btn-primary"><a href="update.php? updateid=<?php echo $row['id'];?>" class="text-light">Update</a></button> |
                             <button class="btn btn-danger"><a href="delete.php? deleteid=<?php echo $row['id'];?>"onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
                             </td>
                             </tr>

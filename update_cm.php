@@ -3,6 +3,10 @@ session_start();
 
 @include_once 'config.php';
 
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['user_type'] !== 'admin') {
+    die("Access denied");
+}
+
 if(isset($_POST['submit'])) {
     $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
     $description = mysqli_real_escape_string($conn, $_POST['description']);
