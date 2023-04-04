@@ -1,6 +1,11 @@
 <?php
 // Include database configuration
 @include_once 'config.php';
+session_start();
+if (!isset($_SESSION['admin_name'])) {
+    // Redirect to homepage if user is not logged in
+    header('location:index.php');
+    exit;}
 
 // Check if the form has been submitted
 if(isset($_POST['submit'])) {

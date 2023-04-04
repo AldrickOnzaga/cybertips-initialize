@@ -1,6 +1,14 @@
 <?php
     include_once 'config.php';
+    
+    session_start();
 
+    // Check if user is logged in
+    if (!isset($_SESSION['admin_name'])) {
+    // Redirect to homepage if user is not logged in
+    header('location:homepage.php');
+    exit;}
+    
     if(isset($_GET['updateid'])){
         $id = $_GET['updateid'];
 
@@ -61,7 +69,8 @@
             <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
             <ul>
                 <li><a href="admin.php">Dashboard</a></li>
-                <li><a href="CM.php">Content management</a></li>
+                <li><a href="cm.php">Announcement managment</a></li>
+                <li><a href="modules.php">Modules management</a></li>
                 <li><a href="pushnotif.php">Push Notification</a></li>
                 <li><a href="index.php">CYBERTIPS</a></li>
                 <li><a href="logout.php">Logout</a></li>

@@ -1,9 +1,13 @@
 <?php
-
     include_once 'config.php';
+    session_start();
 
+// Check if user is logged in
+    if (!isset($_SESSION['admin_name'])) {
+    // Redirect to homepage if user is not logged in
+    header('location:homepage.php');
+    exit;}
 ?>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +16,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/pop_up.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>

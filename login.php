@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>CYBERTIPS - Login</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="css/style1.css">
-        <link rel="stylesheet" href="css/nav.css">
-        <link rel="stylesheet" href="css/credential.css">
-        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    </head>
-    <body>
-    <?php
-@include 'config.php';
+<?php
+include_once 'config.php';
+
 session_start();
 
 if(isset($_POST['submit'])){
@@ -43,8 +32,19 @@ if(isset($_POST['submit'])){
 }
 ?>
 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CYBERTIPS - Login</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style1.css">
+        <link rel="stylesheet" href="css/nav.css">
+        <link rel="stylesheet" href="css/credential.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </head>
+    <body>
 <!-- rest of your HTML code -->
-
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
