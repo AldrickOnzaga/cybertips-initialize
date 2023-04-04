@@ -1,77 +1,95 @@
 <?php
-session_start();
-
+// Include database configuration
 @include_once 'config.php';
 
-if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true || $_SESSION['user_type'] !== 'admin') {
-    die("Access denied");
-}
-
+// Check if the form has been submitted
 if(isset($_POST['submit'])) {
-    $id = filter_var($_POST['id'], FILTER_VALIDATE_INT);
-    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    // Get form data
+    $id = $_POST['id'];
+    $description = $_POST['description'];
 
-    if($id === false || empty($description)){
-        die("Invalid input data");
+    // Handle file upload
+    $image = $_FILES['image']['name'];
+    $temp_image = $_FILES['image']['tmp_name'];
+    if ($image) {
+        // Check if file is an image
+        $file_type = strtolower(pathinfo($image, PATHINFO_EXTENSION));
+        $allowed_types = array('jpg', 'jpeg', 'png', 'gif');
+        if (in_array($file_type, $allowed_types)) {
+            // Upload file
+            move_uploaded_file($temp_image, 'img/' . $image);
+        } else {
+            // Invalid file type
+            $error_message = 'Invalid file type. Please upload a JPEG, PNG, or GIF file.';
+            header("Location: update_cm.php?updateid=$id&error=$error_message");
+            exit;
+        }
     }
 
-    $stmt = $conn->prepare("UPDATE cm SET description = ? WHERE id = ?");
-    $stmt->bind_param("si", $description, $id);
+    // Update record in database
+    $query = "UPDATE cm SET description='$description', img='$image' WHERE id='$id'";
+    $result = mysqli_query($conn, $query);
 
-    if($stmt->execute()){
-        header('location:admin.php');
-    }else{
-        die(mysqli_error($conn));
-    }
+    // Redirect to CM page
+    header('Location: CM.php');
+    exit;
 }
 
-if(isset($_GET['id'])) {
-    $id = filter_var($_GET['id'], FILTER_VALIDATE_INT);
+// Check if an ID has been provided in the URL
+if(isset($_GET['updateid'])) {
+    // Get ID from URL
+    $id = $_GET['updateid'];
 
-    if($id === false){
-        die("Invalid input data");
-    }
+    // Query database for record with matching ID
+    $query = "SELECT * FROM cm WHERE id='$id'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
 
-    $stmt = $conn->prepare("SELECT * FROM cm WHERE id = ?");
-    $stmt->bind_param("i", $id);
-
-    if($stmt->execute()){
-        $result = $stmt->get_result();
-
-        if($result->num_rows == 1){
-            $row = $result->fetch_assoc();
-
-            $id = $row['id'];
-            $description = $row['description'];
-            $image = $row['img'];
-        }else{
-            die("Invalid input data");
-        }
-    }else{
-        die(mysqli_error($conn));
-    }
-}else{
-    die("Invalid input data");
+    // Get values from database and store in variables
+    $image = $row['img'];
+    $description = $row['description'];
 }
 ?>
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Update CM</title>
-</head>
-<body>
-
-<h2>Update CM</h2>
-
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="id" value="<?php echo $id; ?>">
-
-    <label for="description">Description:</label>
-    <textarea id="description" name="description" rows="4" maxlength="100" required><?php echo $description; ?></textarea>
-
-    <button type="submit" name="submit">Update</button>
-</form>
-
-</body>
+    <head>
+        <title>Update Content</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/update_cm.css">
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    </head>
+    <body>
+        <div class="menu">
+            <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
+            <ul>
+                <li><a href="admin.php">Dashboard</a></li>
+                <li><a href="CM.php">Content managment</a></li>
+                <li><a href="pushnotif.php">Push Notification</a></li>
+                <li><a href="index.php">CYBERTIPS</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </div>
+        <div class="body">
+            <h1>Update Content</h1>
+            <form action="update_cm.php" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<?php echo $id; ?>">
+                <div class="image-container">
+                    <img src="img/<?php echo $image; ?>" alt="<?php echo $description; ?>">
+                    <input type="file" name="image" accept="image/*">
+                </div>
+                <div class="textarea-container">
+                    <label for="image-description">Image description:</label>
+                    <textarea id="image-description" name="description" rows="4" maxlength="100" required><?php echo $description; ?></textarea>
+                </div>
+                <button type="submit" name="submit">Update</button>
+            </form>
+        </div>
+        <footer>
+            <p>CYBERTIPS</p>
+        </footer>
+        <script src="js/menu.js"></script>
+    </body>
 </html>
