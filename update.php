@@ -62,6 +62,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/update.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -77,7 +78,7 @@
             </ul>
         </div>
         <div class="body">
-            <h1>UPDATE</h1>
+            <p>UPDATE</p>
             <div class="form-container">
                 <form method="POST">
                     <label for="name">Name:</label>

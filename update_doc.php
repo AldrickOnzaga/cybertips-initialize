@@ -76,7 +76,7 @@ if (isset($_GET['updateid'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/update_cm.css">
+        <link rel="stylesheet" href="css/update_doc.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -84,7 +84,8 @@ if (isset($_GET['updateid'])) {
             <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
             <ul>
                 <li><a href="admin.php">Dashboard</a></li>
-                <li><a href="CM.php">Content managment</a></li>
+                <li><a href="cm.php">Announcement managment</a></li>
+                <li><a href="modules.php">Modules management</a></li>
                 <li><a href="pushnotif.php">Push Notification</a></li>
                 <li><a href="index.php">CYBERTIPS</a></li>
                 <li><a href="logout.php">Logout</a></li>

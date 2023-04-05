@@ -71,7 +71,8 @@ if(isset($_GET['updateid'])) {
             <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
             <ul>
                 <li><a href="admin.php">Dashboard</a></li>
-                <li><a href="CM.php">Content managment</a></li>
+                <li><a href="cm.php">Announcement managment</a></li>
+                <li><a href="modules.php">Modules management</a></li>
                 <li><a href="pushnotif.php">Push Notification</a></li>
                 <li><a href="index.php">CYBERTIPS</a></li>
                 <li><a href="logout.php">Logout</a></li>
@@ -83,8 +84,8 @@ if(isset($_GET['updateid'])) {
                 <input type="hidden" name="id" value="<?php echo $id; ?>">
                 <div class="image-container">
                     <img src="img/<?php echo $image; ?>" alt="<?php echo $description; ?>">
-                    <input type="file" name="image" accept="image/*">
                 </div>
+                <input type="file" name="image" accept="image/*">
                 <div class="textarea-container">
                     <label for="image-description">Image description:</label>
                     <textarea id="image-description" name="description" rows="4" maxlength="100" required><?php echo $description; ?></textarea>
