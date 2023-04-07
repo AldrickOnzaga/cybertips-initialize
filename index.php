@@ -12,6 +12,7 @@
         <link rel="stylesheet" href="css/ddmenu.css">
         <link rel="stylesheet" href="css/slideshow.css">
         <link rel="stylesheet" href="css/content.css">
+        <link rel="stylesheet" href="css/password_generator.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -90,46 +91,100 @@
                 </table>
                 </div>
             </div>
+            <!-- password generator -->
+            <div class="password_generator">
+                <h1>Password Generator</h1>
+                <p>Useful resources for establishing secure, unpredictable passwords that are hard for others to decipher or guess include password generators. For the protection of sensitive data, such as financial or personal information, strong passwords are essential. They can also assist prevent unwanted access to online accounts.</p><br></br>
+                <p>People can also benefit from employing password generators to prevent the widespread mistake of using overused or simple-to-guess passwords, which can leave them open to hacking and identity theft. For each account, people should come up with a special, complicated password to lower the possibility of identity theft.</p><br></br>
+                <p>In general, password generators are a safe and practical approach to create robust, random passwords that can help protect personal data.</p><br></br>
+                <form method="post">
+                    <label for="length">Password length (8-32):</label>
+                    <div class="slidecontainer">
+                        <input type="range" min="8" max="32" value="8" class="slider" id="length" name="length">
+                        <span id="slider-value"></span>
+                    </div>
+                    <br><br>
+                    <input type="checkbox" id="uppercase" name="uppercase" value="1">
+                    <label for="uppercase">Include uppercase letters (A-Z)</label><br>
+                    <input type="checkbox" id="lowercase" name="lowercase" value="1" checked>
+                    <label for="lowercase">Include lowercase letters (a-z)</label><br>
+                    <input type="checkbox" id="numbers" name="numbers" value="1" checked>
+                    <label for="numbers">Include numbers (0-9)</label><br>
+                    <input type="checkbox" id="special" name="special" value="1">
+                    <label for="special">Include special characters (!@#$%^&*)</label><br><br>
+                    <input type="submit" name="generate" value="Generate Password">
+                </form>
+                <?php
+                if (isset($_POST['generate'])) {
+                    $length = $_POST['length'];
+                    $uppercase = isset($_POST['uppercase']);
+                    $lowercase = isset($_POST['lowercase']);
+                    $numbers = isset($_POST['numbers']);
+                    $special = isset($_POST['special']);
+                    $password = generate_password($length, $uppercase, $lowercase, $numbers, $special);
+                    echo '<script>alert("Your password is: ' . $password . '");</script>';
+                }
 
-
+                function generate_password($length, $uppercase, $lowercase, $numbers, $special) {
+                    $chars = '';
+                    if ($uppercase) $chars .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    if ($lowercase) $chars .= 'abcdefghijklmnopqrstuvwxyz';
+                    if ($numbers) $chars .= '0123456789';
+                    if ($special) $chars .= '!@#$%^&*';
+                    $password = '';
+                    for ($i = 0; $i < $length; $i++) {
+                        $password .= $chars[rand(0, strlen($chars) - 1)];
+                    }
+                    return $password;
+                }
+                ?>
+            </div>
         </main>
-
         <footer>
             <p>Created by Aldrick</p>
         </footer>
-
+        <!-- for ICON -->
         <script>
             var img = document.getElementById("logo");
             img.addEventListener("click", function() {
                 window.location.href = "http://localhost/cybertips-initialize/index.php";
             });
         </script>
+        <!-- for slideshow -->
+        <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
 
-<script>
-  var slideIndex = 1;
-  showSlides(slideIndex);
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
-
-  function showSlides(n) {
-    var i;
-    var slides = document.querySelectorAll('#display-image img');
-    var descriptions = document.getElementById('display-description');
-    if (n > slides.length) {
-      slideIndex = 1;
-    }
-    if (n < 1) {
-      slideIndex = slides.length;
-    }
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    slides[slideIndex - 1].style.display = "block";
-    descriptions.innerHTML = slides[slideIndex - 1].getAttribute('data-description');
-  }
-</script>
-
+        function showSlides(n) {
+            var i;
+            var slides = document.querySelectorAll('#display-image img');
+            var descriptions = document.getElementById('display-description');
+            if (n > slides.length) {
+            slideIndex = 1;
+            }
+            if (n < 1) {
+            slideIndex = slides.length;
+            }
+            for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            }
+            slides[slideIndex - 1].style.display = "block";
+            descriptions.innerHTML = slides[slideIndex - 1].getAttribute('data-description');
+        }
+        </script>
+        <!-- for password generator -->
+        <script>
+            var slider = document.getElementById("length");
+            var output = document.getElementById("slider-value");
+            output.innerHTML = slider.value;
+            
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            }
+        </script>
     </body>
 </html>
