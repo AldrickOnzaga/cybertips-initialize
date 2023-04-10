@@ -73,42 +73,44 @@
   height: 25px;
 }
 
-/* table */
+/* table
+.subscription-table {
+  margin-top: 20px;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 800px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
 
-.subcription-table {
-    margin-top: 20px;
-    border-collapse: collapse;
-    width: 100%;
-    max-width: 800px;
-  }
-  
-  .subcription-table th,
-  .subcription-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
-  }
-  
-  .subcription-table th {
-    background-color: #f2f2f2;
-    text-align: left;
-  }
-  
-  .subcription-table tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .subcription-table tr:hover {
-    background-color: #ddd;
-  }
-  
-  .subcription-table button {
-    border: none;
-    background-color: transparent;
-    color: #007bff;
-    cursor: pointer;
-  }
-  
-  .subcription-table button:hover {
-    text-decoration: underline;
-  }
+.subscription-table th,
+.subscription-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.subscription-table th {
+  background-color: #f2f2f2;
+  text-align: left;
+}
+
+.subscription-table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.subscription-table tr:hover {
+  background-color: #ddd;
+}
+
+.subscription-table button {
+  border: none;
+  background-color: transparent;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.subscription-table button:hover {
+  text-decoration: underline;
+} */
+
   

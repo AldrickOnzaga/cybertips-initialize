@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/pushnotif.css">
+        <link rel="stylesheet" href="css/table.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -28,66 +29,68 @@
         </div>
         <div class="body">
             <h1>Push Notification</h1>
-            <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data">
                 <label for="image-description">Title:</label>
                 <div class="textarea-container-pushnotif-title">
-                    <textarea id="image-description" name="description" rows="4" maxlength="100" required></textarea>
+                    <textarea id="image-description" name="title" rows="4" maxlength="100" required></textarea>
                 </div>
             
                 <label for="image-description">Link:</label>
                 <div class="textarea-container-pushnotif-link">
-                    <textarea id="image-description" name="description" rows="4" maxlength="100" required></textarea>
+                    <textarea id="image-description" name="link" rows="4" maxlength="100" required></textarea>
                 </div>
              
-                <label for="image-description">Notification:</label>
+                <label for="Notification">Notification:</label>
                 <div class="textarea-container-pushnotif">
-                    <textarea id="image-description" name="description" rows="4" maxlength="100" required></textarea>
-                    <span class="word-count">0 / 100</span>
+                    <textarea id="notif" name="notif" rows="4" maxlength="1000" required></textarea>
+                    <span class="word-count">0</span>
                 </div>
                 <button class="push-button" type="submit" name="push">PUSH</button>
             </form>
-            <div class="subcription-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Title</th>
-                            <th>link</th>
-                            <th>notif</th>
-                        </tr>
-                    </thead>
-                    <?php
-                        $sql = "SELECT * FROM subscriptions";
-                        $stmt = mysqli_prepare($conn, $sql);
-                        if ($stmt) {
-                            mysqli_stmt_execute($stmt);
-                            $result = mysqli_stmt_get_result($stmt);
-                            if(mysqli_num_rows($result)>0){
-                                while($row=mysqli_fetch_assoc($result)){
-                                    $id=$row['id'];
-                                    // process the row data                
-                    ?>
-                    <tbody>
-                        <tr>
-                        <td><?php echo $row['id'];?></td>
-                        <td><?php echo $row['title'];?></td>
-                        <td><?php echo $row['link'];?></td>
-                        <td><?php echo $row['notif'];?></td>
-                        <td>
-                            <button><a href="update_doc.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
-                            <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
-                        </td>
-                        </tr>
-                            <?php
+            <div class="table-container">
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>link</th>
+                                <th>notif</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <?php
+                            $sql = "SELECT * FROM subscriptions";
+                            $stmt = mysqli_prepare($conn, $sql);
+                            if ($stmt) {
+                                mysqli_stmt_execute($stmt);
+                                $result = mysqli_stmt_get_result($stmt);
+                                if(mysqli_num_rows($result)>0){
+                                    while($row=mysqli_fetch_assoc($result)){
+                                        $id=$row['id'];
+                                        // process the row data                
+                        ?>
+                        <tbody>
+                            <tr>
+                            <td><?php echo $row['id'];?></td>
+                            <td><?php echo $row['title'];?></td>
+                            <td><?php echo $row['link'];?></td>
+                            <td><?php echo $row['notif'];?></td>
+                            <td>
+                                <button><a href="delete_notif.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt">Delete</a></button>
+                            </td>
+                            </tr>
+                                <?php
+                                        }
+                                    }else{
+                                        echo '<h2 class=text-danger>Data not found</h2>';
                                     }
-                                }else{
-                                    echo '<h2 class=text-danger>Data not found</h2>';
-                                }
-                                mysqli_stmt_close($stmt);
-                                }
-                            ?>
-                    </tbody>
-                </table>
+                                    mysqli_stmt_close($stmt);
+                                    }
+                                ?>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
         <footer>
@@ -99,6 +102,32 @@
             menuBtn.addEventListener('click', () => {
                 menu.classList.toggle('active');
             });
+        </script>
+        <script>
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const formData = new FormData(form);
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'subscribe.php');
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        alert('You have succesfully sent a notification!');
+                        window.location.href = 'pushnotif.php';
+                    }
+                };
+                xhr.send(formData);
+            });
+        </script>
+        <script>
+             const textarea = document.getElementById('notif');
+            const wordCountSpan = document.querySelector('.word-count');
+
+            textarea.addEventListener('input', function() {
+            const wordCount = textarea.value.trim().split(/\s+/).length;
+            wordCountSpan.textContent = wordCount   ;
+            });
+
         </script>
     </body>
 </html>

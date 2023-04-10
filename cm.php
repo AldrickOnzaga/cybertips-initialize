@@ -78,7 +78,7 @@ if (!isset($_SESSION['admin_name'])) {
                             <td><?php echo $description; ?></td>
                             <td>
                                 <button><a href="update_cm.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
-                                <button><a href="delete_cm.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
+                                <button><a href="delete_cm.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt">Delete</a></button>
                             </td>
                         </tr>
                         <?php } ?>

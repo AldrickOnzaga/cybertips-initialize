@@ -107,7 +107,7 @@ if(isset($_POST['submit'])) {
                                     <td><a href="documents/<?php echo $document; ?>" target="_blank"><?php echo $document; ?></a></td>
                                     <td>
                                         <button><a href="update_doc.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
-                                        <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
+                                        <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a>Delete</button>
                                     </td>
                                 </tr>
                             <?php } ?>
