@@ -7,11 +7,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Admin Dashboard</title>
+        <title>Push Notification</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/pushnotif.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -27,7 +27,15 @@
                 </ul>
         </div>
         <div class="body">
-            <h1>POST</h1>
+            <h1>Push Notification</h1>
+            <form action="upload.php" method="post" enctype="multipart/form-data">
+                <label for="image-description">Notification:</label>
+                <div class="textarea-container-pushnotif">
+                    <textarea id="image-description" name="description" rows="4" maxlength="100" required></textarea>
+                    <span class="word-count">0 / 100</span>
+                </div>
+                <button type="submit" name="push">PUSH</button>
+            </form>
         </div>
         <footer>
                 <p>CYBERTIPS</p>
