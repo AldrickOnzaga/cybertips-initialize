@@ -1,0 +1,23 @@
+.textarea-container-pushnotif {
+    position: relative;
+  }
+  
+  .textarea-container-pushnotif textarea {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    resize: none;
+  }
+  
+  .textarea-container-pushnotif .word-count {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 14px;
+    color: #888;
+  }
+  
