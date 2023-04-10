@@ -101,8 +101,8 @@
                             <td><?php echo $row['password'];?></td>
                             <td><?php echo $row['user_type'];?></td>
                             <td>
-                                <button><a href="update_doc.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
-                                <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
+                                <button><a href="update.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
+                                <button><a href="delete.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
                             </td>
                             </tr>
                             </tbody>
