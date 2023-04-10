@@ -77,8 +77,8 @@ if (!isset($_SESSION['admin_name'])) {
                             <td class="image"><img src="img/<?php echo $image; ?>" alt="<?php echo $description; ?>"></td>
                             <td><?php echo $description; ?></td>
                             <td>
-                            <button class="btn btn-primary"><a href="update_cm.php? updateid=<?php echo $row['id'];?>" class="text-light">Update</a></button> |
-                            <button class="btn btn-danger"><a href="delete_cm.php? deleteid=<?php echo $row['id'];?>"onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
+                                <button><a href="update_doc.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
+                                <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a></button>
                             </td>
                         </tr>
                         <?php } ?>
