@@ -1,23 +1,114 @@
+/* Notification */
 .textarea-container-pushnotif {
     position: relative;
   }
-  
-  .textarea-container-pushnotif textarea {
+
+.textarea-container-pushnotif textarea {
     display: block;
     width: 100%;
-    padding: 8px 12px;
+    padding: 12px 8px;
     font-size: 16px;
     line-height: 1.5;
     border-radius: 6px;
     border: 1px solid #ccc;
     resize: none;
-  }
-  
-  .textarea-container-pushnotif .word-count {
+}
+
+.textarea-container-pushnotif .word-count {
     position: absolute;
     bottom: 5px;
     right: 10px;
     font-size: 14px;
     color: #888;
+}
+
+.push-button {
+    padding: 10px 20px;
+    background-color: #4CAF50; /* green */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+.push-button:hover {
+    background-color: #3e8e41;
+}
+
+/* notification title */
+.textarea-container-pushnotif-title {
+  position: relative;
+  margin-top: 20px;
+}
+
+.textarea-container-pushnotif-title textarea {
+  display: block;
+  width: 100%;
+  /* padding: 12px 8px; */
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: none;
+  height: 25px;
+}
+
+/* links */
+
+.textarea-container-pushnotif-link {
+  position: relative;
+  margin-top: 20px;
+}
+
+.textarea-container-pushnotif-link textarea {
+  display: block;
+  width: 100%;
+  /* padding: 12px 8px; */
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  resize: none;
+  height: 25px;
+}
+
+/* table */
+
+.subcription-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .subcription-table th,
+  .subcription-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  .subcription-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+  
+  .subcription-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .subcription-table tr:hover {
+    background-color: #ddd;
+  }
+  
+  .subcription-table button {
+    border: none;
+    background-color: transparent;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .subcription-table button:hover {
+    text-decoration: underline;
   }
   
