@@ -69,15 +69,14 @@
             </div>
 		</main>
 
-		<footer>
-			<!-- Your footer content goes here -->
-			<p>Created by Aldrick</p>
-		</footer>
+        <footer>
+                <p>CYBERTIPS</p>
+        </footer>
 
         <script>
             var img = document.getElementById("logo");
             img.addEventListener("click", function() {
-                window.location.href = "http://localhost/cybertips-initialize/index.php";
+                window.location.href = "http://172.168.1.2:80/cybertips-initialize/index.php";
             });
         </script>
         

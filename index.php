@@ -21,6 +21,7 @@
             <label for="check" class="checkbtn">
                 <i class="fas fa-bars"></i>
             </label>
+            <!-- <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo"> -->
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About</a></li>
@@ -53,14 +54,19 @@
                     </div>
                     <div id="display-image">
                         <?php
-                        $query = "select * from cm";
+                        $query = "SELECT * FROM cm";
                         $result = mysqli_query($conn, $query);
 
-                        while ($data = mysqli_fetch_assoc($result)) {
-                            echo '<img src="./img/' . $data['img'] . '"data-description="' . $data['description'] . '">';
+                        if (mysqli_num_rows($result) == 0) {
+                            echo '<p>No announcement has been made</p>';
+                        } else {
+                            while ($data = mysqli_fetch_assoc($result)) {
+                                echo '<img src="./img/' . $data['img'] . '" data-description="' . $data['description'] . '">';
+                            }
                         }
                         ?>
                     </div>
+
                     <div id="display-description"></div>
                 </div>
                 <div class="inner-container2">
@@ -75,16 +81,18 @@
                     </thead>
                     <tbody>
                         <?php
-                        // Query database for documents
                         $query = "SELECT * FROM documents";
                         $result = mysqli_query($conn, $query);
 
-                        // Loop through documents and display in table rows
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td>" . $row['title'] . "</td>";
-                            echo "<td><a href='documents/" . $row['document'] . "' target='_blank'>" . $row['document'] . "</a></td>";
-                            echo "</tr>";
+                        if (mysqli_num_rows($result) == 0) {
+                            echo '<p>No announcement has been made</p>';
+                        } else {
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<tr>";
+                                echo "<td>" . $row['title'] . "</td>";
+                                echo "<td><a href='documents/" . $row['document'] . "' target='_blank'>" . $row['document'] . "</a></td>";
+                                echo "</tr>";
+                            }
                         }
                         ?>
                     </tbody>
@@ -141,7 +149,7 @@
             </div>
         </main>
         <footer>
-            <p>Created by Aldrick</p>
+                <p>CYBERTIPS</p>
         </footer>
         <!-- for ICON -->
         <script>

@@ -39,7 +39,7 @@ if (!isset($_SESSION['admin_name'])) {
                 <input type="file" id="image-upload" name="image" accept=".jpg, .jpeg, .png" required>
                     <div class="textarea-container">
                     <label for="image-description">Image description:</label>
-                    <textarea id="image-description" name="description" rows="4" maxlength="100" required></textarea>
+                    <textarea id="image-description" name="description" rows="8" cols="50" maxlength="100" style="resize:none;" required></textarea>
                     <span class="word-count">0 / 100</span>
                 </div>
                 <button type="submit" name="upload">Upload</button>

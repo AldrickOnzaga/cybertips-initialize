@@ -1,4 +1,9 @@
+<?php
 
+    @include_once 'config.php';
+
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,19 +27,11 @@
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
                     <?php
-                    session_start();
                     if(isset($_SESSION['admin_name'])) {
                         echo '<li><a href="admin.php">'.$_SESSION['admin_name'].'</a></li>';
                     } elseif(isset($_SESSION['user_name'])) {
                         echo '<li><a href="user.php">'.$_SESSION['user_name'].'</a></li>';
                         $name = $_SESSION['user_name'];
-                        /*echo '<li class="dropdown">';
-                        echo '<a href="#" class="dropbtn">'.$_SESSION['user_name'].' <i class="fa fa-caret-down"></i></a>';
-                        echo '<div class="dropdown-content">';
-                        echo '<a href="userdash.php">Dashboard</a>';
-                        echo '<a href="logout.php">Logout</a>';
-                        echo '</div>';
-                        echo '</li>';*/
                     } else {
                         echo '<li><a href="login.php">Log in</a></li>';
                     }
@@ -43,14 +40,12 @@
                 <!--<a href="login.php">Log in</a>-->
         </nav>
         <main>
-
             <h1>Welcome, <?php echo $name; ?>!</h1>
-
-            <!-- Add your admin dashboard content here -->
-
             <form action="logout.php" method="post">
                 <input type="submit" value="Logout">
             </form>
+            <!-- Notification table -->
+            
         </main>
         <footer>
                 <p>CYBERTIPS</p>

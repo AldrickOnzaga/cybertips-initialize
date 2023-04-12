@@ -21,4 +21,5 @@ form input, form textarea{
     outline: none;
     background: white;
     font-size: 16px;
+    resize: none;
 }

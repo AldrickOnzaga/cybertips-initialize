@@ -2,6 +2,13 @@
 
     @include_once 'config.php';
 
+    session_start();
+
+    // Check if user is logged in
+    if (!isset($_SESSION['admin_name'])) {
+        // Redirect to homepage if user is not logged in
+        header('location:index.php');
+        exit;}
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +21,7 @@
         <link rel="stylesheet" href="css/pushnotif.css">
         <link rel="stylesheet" href="css/table.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     </head>
     <body>
         <div class="menu">
@@ -30,20 +38,42 @@
         <div class="body">
             <h1>Push Notification</h1>
             <form method="post" enctype="multipart/form-data">
-                <label for="image-description">Title:</label>
+                <label>Title:</label>
                 <div class="textarea-container-pushnotif-title">
                     <textarea id="image-description" name="title" rows="4" maxlength="100" required></textarea>
                 </div>
-            
-                <label for="image-description">Link:</label>
+                <label >Link:</label>
                 <div class="textarea-container-pushnotif-link">
                     <textarea id="image-description" name="link" rows="4" maxlength="100" required></textarea>
                 </div>
-             
-                <label for="Notification">Notification:</label>
+
+                <label>Notification:</label>
                 <div class="textarea-container-pushnotif">
                     <textarea id="notif" name="notif" rows="4" maxlength="1000" required></textarea>
                     <span class="word-count">0</span>
+                </div>
+
+                <label for="time">Time:</label>
+                <div>
+                    <select name="time" class="form-control">
+                        <option value="now">Now</option>
+                    </select>
+                </div>
+
+                <label for="user">User:</label>
+                <div>
+                    <select name="recipient" id="recipient">
+                        <?php
+                        $sql = "SELECT name FROM user_list WHERE user_type != 'admin'";
+                        $result = $conn->query($sql);
+                        // Generate an option for each user name
+                        if ($result->num_rows > 0) {
+                            while($row = $result->fetch_assoc()) {
+                                echo '<option value="' . $row["name"] . '">' . $row["name"] . '</option>';
+                            }
+                        }
+                        ?>
+                    </select>
                 </div>
                 <button class="push-button" type="submit" name="push">PUSH</button>
             </form>
@@ -56,6 +86,8 @@
                                 <th>Title</th>
                                 <th>link</th>
                                 <th>notif</th>
+                                <th>time</th>
+                                <th>Recipient</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -76,6 +108,8 @@
                             <td><?php echo $row['title'];?></td>
                             <td><?php echo $row['link'];?></td>
                             <td><?php echo $row['notif'];?></td>
+                            <td><?php echo $row['date_added'];?></td>
+                            <td><?php echo $row['recipient'];?></td>
                             <td>
                                 <button><a href="delete_notif.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt">Delete</a></button>
                             </td>

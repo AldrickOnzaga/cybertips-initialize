@@ -78,7 +78,7 @@
         </main>
         
         <footer>
-            <p>Created by Aldrick</p>
+                <p>CYBERTIPS</p>
         </footer>
 
         <script>
