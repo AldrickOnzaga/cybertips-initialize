@@ -19,9 +19,9 @@
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                <i class="fas fa-bars"></i>
+                <i class="fas fa-bars">menu</i>
             </label>
-            <!-- <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo"> -->
+            <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
             <ul>
                 <li><a href="index.php">Home</a></li>
                 <li><a href="about.php">About</a></li>

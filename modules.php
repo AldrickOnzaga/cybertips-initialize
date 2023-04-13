@@ -60,7 +60,7 @@ if(isset($_POST['submit'])) {
         <div class="menu">
                 <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
-                    <li><a href="admin.php">Dashboard</a></li>
+                    <li><a href="admin.php">User management</a></li>
                     <li><a href="cm.php">Announcement managment</a></li>
                     <li><a href="modules.php">Modules management</a></li>
                     <li><a href="pushnotif.php">Push Notification</a></li>
@@ -107,7 +107,7 @@ if(isset($_POST['submit'])) {
                                     <td><a href="documents/<?php echo $document; ?>" target="_blank"><?php echo $document; ?></a></td>
                                     <td>
                                         <button><a href="update_doc.php?updateid=<?php echo $id; ?>" class="text-light">Update</a></button> |
-                                        <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt"></a>Delete</button>
+                                        <button><a href="delete_doc.php?deleteid=<?php echo $id; ?>" onclick="return confirm('Are you sure?')" name='del-btn' class="fas fa-trash-alt">Delete</a></button>
                                     </td>
                                 </tr>
                             <?php } ?>

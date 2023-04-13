@@ -24,7 +24,7 @@
         <div class="menu">
                 <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
-                    <li><a href="admin.php">Dashboard</a></li>
+                    <li><a href="admin.php">User management</a></li>
                     <li><a href="cm.php">Announcement managment</a></li>
                     <li><a href="modules.php">Modules management</a></li>
                     <li><a href="pushnotif.php">Push Notification</a></li>
@@ -34,8 +34,8 @@
         </div>
         <!-- body -->
         <div class="body">
-        <h1>
-                dashboard
+            <h1>
+                User management
             </h1>
             <button id="add-user-btn" class="btn btn-primary">Add</button>
             <script>
