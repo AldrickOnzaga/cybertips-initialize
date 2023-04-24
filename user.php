@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/style1.css">
         <link rel="stylesheet" href="css/nav.css">
         <link rel="stylesheet" href="css/credential.css">
+        <link rel="stylesheet" href="css/notif.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -44,11 +45,40 @@
             <form action="logout.php" method="post">
                 <input type="submit" value="Logout">
             </form>
-            <!-- Notification table -->
-            
+            <!-- Notification -->
+            <div class="notification-container">
+                <?php
+                    $username = $_SESSION['user_name'];
+                    $query = "SELECT * FROM subscriptions WHERE recipient = '$username'";
+                    $result = mysqli_query($conn, $query);
+
+                    if (mysqli_num_rows($result) == 0) {
+                        echo '<p>No Notification has been made</p>';
+                    } else {
+                        while ($data = mysqli_fetch_assoc($result)) {
+                            echo '<div class="notif">';
+                            echo '<h2>' . $data['title'] . '</h2>';
+                            echo '<a href="' . $data['link'] . '">' . $data['link'] .'</a>';
+                            echo '<p>' . $data['notif'] . '</p>';
+                            echo '<button type="button" class="delete-button" data-id="' . $data['id'] . '">Close</button>';
+                            echo '</div>';
+                        }                                       
+                    }
+                ?>
+            </div>
         </main>
         <footer>
                 <p>CYBERTIPS</p>
         </footer>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('.delete-button').click(function() {
+                    $(this).parent().hide();
+                    // You can also use AJAX to send a request to the server to mark the notification as "deleted"
+                    // by setting a flag in the database instead of actually deleting the record.
+                });
+            });
+        </script>
     </body>
 </html>
