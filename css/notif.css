@@ -1,0 +1,33 @@
+.notification-container {
+  background-color: #e6e4e4;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  height: 500px;
+  margin: 20px auto;
+  padding: 10px;
+  text-align: center;
+}
+
+.notif {
+  border: 1px solid #b7b5b5;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  .notification-container {
+    height: auto;
+    width: 90%;
+    margin: 10px auto;
+    padding: 5px;
+  }
+  
+  .notif {
+    font-size: 14px;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+}
