@@ -6,7 +6,7 @@
     // Check if user is logged in
     if (!isset($_SESSION['admin_name'])) {
     // Redirect to homepage if user is not logged in
-    header('location:homepage.php');
+    header('location:index.php');
     exit;}
     
     if(isset($_GET['updateid'])){
