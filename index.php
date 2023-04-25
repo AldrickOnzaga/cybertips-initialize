@@ -12,7 +12,7 @@
         <!-- <link rel="stylesheet" href="css/ddmenu.css"> -->
         <link rel="stylesheet" href="css/slideshow.css">
         <link rel="stylesheet" href="css/content.css">
-        <link rel="stylesheet" href="css/password_generator.css">
+        <!-- <link rel="stylesheet" href="css/password_generator.css"> -->
         <link rel="stylesheet" href="css/box.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
@@ -20,7 +20,7 @@
         <nav>
             <input type="checkbox" id="check">
             <label for="check" class="checkbtn">
-                <i class="fas fa-bars">menu</i>
+                <i class="fas fa-bars">Menu</i>
             </label>
             <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
             <ul>
@@ -154,12 +154,12 @@
                 <p>CYBERTIPS</p>
         </footer>
         <!-- for ICON -->
-        <script>
+        <!-- <script>
             var img = document.getElementById("logo");
             img.addEventListener("click", function() {
                 window.location.href = "http://localhost/cybertips-initialize/index.php";
             });
-        </script>
+        </script> -->
         <!-- for slideshow -->
         <script>
         var slideIndex = 1;
