@@ -89,10 +89,10 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="name" required placeholder="Name">
                     <input type="email" name="email" required placeholder="Email">
                     <input type="password" name="password" required placeholder="Password">
-                    <input type="password" name="cpassword" required placeholder="Password">
+                    <input type="password" name="cpassword" required placeholder="Confirm Password">
                     <select name="user_type">
                         <option value="user">user</option>
-                        <option value="admin">admin</option>
+                        <option value="employee">employee</option>
                     </select>
                     <input type="submit" name="submit" value="register now" class="form-btn">
                     <p>already have an account? <a href="login.php">login now</a></p>

@@ -31,9 +31,12 @@
                 session_start();
                 if(isset($_SESSION['admin_name'])) {
                     echo '<li><a href="admin.php">'.$_SESSION['admin_name'].'</a></li>';
-                } elseif(isset($_SESSION['user_name'])) {
+                }elseif(isset($_SESSION['user_name'])) {
                     echo '<li><a href="user.php">'.$_SESSION['user_name'].'</a></li>';
-                } else {
+                }elseif(isset($_SESSION['user_name'])) {
+                    echo '<li><a href="user.php">'.$_SESSION['user_name'].'</a></li>';
+                }
+                else {
                     echo '<li><a href="login.php">Log in</a></li>';
                 }
                 ?>

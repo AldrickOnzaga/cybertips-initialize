@@ -19,17 +19,19 @@ if(isset($_POST['submit'])){
             if($row['user_type'] == 'admin'){
                 $_SESSION['admin_name'] = $row['name'];
                 header('location:admin.php');
-            }elseif($row['user_type'] == 'user'){
+            }if($row['user_type'] == 'user'){
                 $_SESSION['user_name'] = $row['name'];
                 header('location:index.php');
-            }
+            }elseif($row['user_type'] == 'employee'){
+                $_SESSION['user_name'] = $row['name'];
+                header('location:index.php');
         }else{
             $error[] = 'Incorrect email or password. Please try again';
         }
     }else{
         $error[] = 'Incorrect email or password. Please try again';
     }
-}
+    }}
 ?>
 
 <!DOCTYPE html>
