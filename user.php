@@ -4,6 +4,7 @@
 
     session_start();
 ?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,7 +50,7 @@
             <div class="notification-container">
                 <?php
                     $username = $_SESSION['user_name'];
-                    $query = "SELECT * FROM subscriptions WHERE recipient = '$username'";
+                    $query = "SELECT * FROM subscriptions WHERE recipient = '$username' AND date_added BETWEEN NOW() - INTERVAL 1 DAY AND NOW()"; // Fetch notifications within the past 24 hours
                     $result = mysqli_query($conn, $query);
 
                     if (mysqli_num_rows($result) == 0) {
@@ -66,6 +67,7 @@
                     }
                 ?>
             </div>
+
         </main>
         <footer>
                 <p>CYBERTIPS</p>
@@ -74,11 +76,23 @@
         <script>
             $(document).ready(function() {
                 $('.delete-button').click(function() {
-                    $(this).parent().hide();
-                    // You can also use AJAX to send a request to the server to mark the notification as "deleted"
-                    // by setting a flag in the database instead of actually deleting the record.
+                    var notification_id = $(this).data('id');
+                    var notification_element = $(this).parent();
+
+                    $.ajax({
+                        url: 'delete_notification.php',
+                        method: 'POST',
+                        data: { id: notification_id },
+                        success: function(data) {
+                            notification_element.remove();
+                        },
+                        error: function() {
+                            alert('Error deleting notification');
+                        }
+                    });
                 });
             });
         </script>
+
     </body>
 </html>

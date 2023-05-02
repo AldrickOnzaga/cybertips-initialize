@@ -44,7 +44,7 @@
                 </div>
                 <label >Link:</label>
                 <div class="textarea-container-pushnotif-link">
-                    <textarea id="image-description" name="link" rows="4" maxlength="100" required></textarea>
+                    <textarea id="image-description" name="link" rows="4" maxlength="1000" required></textarea>
                 </div>
 
                 <label>Notification:</label>
@@ -53,13 +53,12 @@
                     <span class="word-count">0</span>
                 </div>
 
-                <label for="time">Time:</label>
+                <label for="datetime">Date and Time:</label>
                 <div>
-                    <select name="time" class="form-control">
-                        <option value="now">Now</option>
-                    </select>
+                    <input type="date" name="date" id="date" required>
+                    <input type="time" name="time" id="time" required>
                 </div>
-
+                
                 <label for="user">User:</label>
                 <div>
                     <select name="recipient" id="recipient">
@@ -75,6 +74,7 @@
                         ?>
                     </select>
                 </div>
+                <br></br>
                 <button class="push-button" type="submit" name="push">PUSH</button>
             </form>
             <div class="table-container">

@@ -49,19 +49,19 @@
             <br></br>
             <div class="profile-container">
                 <div class="profile">
-                            <img src="img/laorden.png" alt="Aldrick Onzaga">
+                            <img src="img/laorden.png" alt="John Rey A. Laorden">
+                            <p>John Rey A. Laorden</p>
+                            <p>Member</p>
+                            <p>Document</p>
+                </div>
+                <div class="profile">
+                            <img src="img/onzaga.jpg" alt="Aldrick C. Onzaga">
                             <p>Aldrick C. Onzaga</p>
                             <p>Leader</p>
                             <p>Main programmer</p>
                 </div>
                 <div class="profile">
-                            <img src="img/onzaga.jpg" alt="Aldrick Onzaga">
-                            <p>Aldrick C. Onzaga</p>
-                            <p>Leader</p>
-                            <p>Main programmer</p>
-                </div>
-                <div class="profile">
-                            <img src="img/master.jpg" alt="Aldrick Onzaga">
+                            <img src="img/master.jpg" alt="Rañopa, John Ishmael V.">
                             <p>Aldrick C. Onzaga</p>
                             <p>Leader</p>
                             <p>Main programmer</p>

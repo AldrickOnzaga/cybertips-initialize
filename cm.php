@@ -16,6 +16,7 @@ if (!isset($_SESSION['admin_name'])) {
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/cm.css">
         <link rel="stylesheet" href="css/table2.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
@@ -39,11 +40,12 @@ if (!isset($_SESSION['admin_name'])) {
                 <input type="file" id="image-upload" name="image" accept=".jpg, .jpeg, .png" required>
                     <div class="textarea-container">
                     <label for="image-description">Image description:</label>
-                    <textarea id="image-description" name="description" rows="8" cols="50" maxlength="100" style="resize:none;" required></textarea>
+                    <textarea id="image-description" name="description" rows="8" cols="50" maxlength="1000" style="resize:none;" required></textarea>
                     <span class="word-count">0 / 100</span>
                 </div>
                 <button type="submit" name="upload">Upload</button>
             </form>
+            <br></br>
             </div>
             <!-- table -->
             <div class="table-container">

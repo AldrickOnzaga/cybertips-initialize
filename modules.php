@@ -54,6 +54,7 @@ if(isset($_POST['submit'])) {
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/table.css">
+        <link rel="stylesheet" href="css/modules.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
