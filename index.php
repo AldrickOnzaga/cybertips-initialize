@@ -58,16 +58,19 @@
             </video>
             <br></br>
             <div class="button-menu">
+
                 <div class="button-menu-list">
                     <a href="#">Tips</a>
                 </div>
+
                 <div class="button-menu-list">
-                    <a href="#">Modules</a>
+                    <a href="learning_materials.php">Modules</a>
                 </div>
 
                 <div class="button-menu-list">
                     <a href="#">News</a>
                 </div>
+                
             </div>
         </main>
         <footer>

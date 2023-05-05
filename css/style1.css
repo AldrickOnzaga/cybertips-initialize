@@ -47,6 +47,18 @@ main {
     padding: 50px;
 }
 
+.body {
+    position: inherit;
+    top: 0;
+    left: 20%; /* adjust this value to move the body to the desired position */
+    width: 80%; /* subtract the menu width from the body width */
+    height: 93%;
+    background-color: #f2f2f2;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: scroll;
+  }
+
 /* Style for footer */
 footer {
     background-color: #3385ff;
