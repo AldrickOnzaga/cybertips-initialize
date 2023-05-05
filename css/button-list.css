@@ -1,0 +1,50 @@
+.button-menu {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button-menu-list {
+  width: 194.17px;
+  height: 80px;
+  background: #5C9DFF;
+  border-radius: 50px;
+  display: inline-block;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.button-menu-list a {
+  color: white;
+  font-size: 24px;
+  text-decoration: none;
+  display: block;
+  line-height: 80px;
+  text-align: center;
+}
+
+.button-menu-list:hover {
+  background: #3F80FF;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.button-menu-list:hover a {
+  color: #FFF;
+}
+
+@media (max-width: 768px) {
+  .button-menu-list {
+    width: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-menu-list {
+    width: 100%;
+  }
+}

@@ -1,0 +1,12 @@
+.main_video {
+    width: 100%;
+    height: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .main_video source {
+    display: block;
+  }
+  
