@@ -25,7 +25,7 @@ if (!isset($_SESSION['admin_name'])) {
                 <img id="logo" class="logo" src="logo/cyb6.png" alt="CYBERTIPS Logo">
                 <ul>
                     <li><a href="admin.php">User management</a></li>
-                    <li><a href="cm.php">Announcement managment</a></li>
+                    <li><a href="cm.php">Announcement management</a></li>
                     <li><a href="modules.php">Modules management</a></li>
                     <li><a href="pushnotif.php">Push Notification</a></li>
                     <li><a href="index.php">CYBERTIPS</a></li>
@@ -33,7 +33,7 @@ if (!isset($_SESSION['admin_name'])) {
                 </ul>
         </div>
         <div class="body">
-            <h1>Content Management</h1>
+            <h1>Announcement management</h1>
             <div class="upload-container">
             <form action="upload.php" method="post" enctype="multipart/form-data">
                 <label for="image-upload">Select an image to upload:</label>

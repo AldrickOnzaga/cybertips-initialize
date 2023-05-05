@@ -14,6 +14,8 @@
         <link rel="stylesheet" href="css/content.css">
         <!-- <link rel="stylesheet" href="css/password_generator.css"> -->
         <link rel="stylesheet" href="css/box.css">
+        <link rel="stylesheet" href="css/video.css">
+        <link rel="stylesheet" href="css/button-list.css">
         <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     </head>
     <body>
@@ -43,114 +45,29 @@
             </ul>
             <!--<a href="login.php">Log in</a>-->
         </nav>
-        
         <main>
             <h1>Welcome to CYBERTIPS</h1>
             <p>This website will be use for increasing the awareness of the student of the Fort Bonifacio Senior HighSchool</p>
-            <br></br>
-            <div class="box">
-                <div class="outer-container">
-                    <div class="inner-container1">
-                        <label style="font-size: 2rem; font-weight: bold;">Announcement</label>
-                        <div class="controls">
-                            <button class="prev" onclick="plusSlides(-1)">&#10094;</button>
-                            <button class="next" onclick="plusSlides(1)">&#10095;</button>
-                        </div>
-                        <div id="display-image">
-                            <?php
-                            $query = "SELECT * FROM cm";
-                            $result = mysqli_query($conn, $query);
-
-                            if (mysqli_num_rows($result) == 0) {
-                                echo '<p>No announcement has been made</p>';
-                            } else {
-                                while ($data = mysqli_fetch_assoc($result)) {
-                                    echo '<img src="./img/' . $data['img'] . '" data-description="' . $data['description'] . '">';
-                                }
-                            }
-                            ?>
-                        </div>
-
-                        <div id="display-description"></div>
-                        </div>
-                    <div class="inner-container2">
-                        <label style="font-size: 2rem; font-weight: bold;">Modules</label>
-                        
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Document</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-                            $query = "SELECT * FROM documents";
-                            $result = mysqli_query($conn, $query);
-
-                            if (mysqli_num_rows($result) == 0) {
-                                echo '<p>No announcement has been made</p>';
-                            } else {
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    echo "<tr>";
-                                    echo "<td>" . $row['title'] . "</td>";
-                                    echo "<td><a href='documents/" . $row['document'] . "' target='_blank'>" . $row['document'] . "</a></td>";
-                                    echo "</tr>";
-                                }
-                            }
-                            ?>
-                        </tbody>
-                    </table>
-                    </div>
-                </div>
-            </div>
-            <!-- password generator -->
-            <div class="password_generator">
-                <h1>Password Generator</h1>
-                <p>Useful resources for establishing secure, unpredictable passwords that are hard for others to decipher or guess include password generators. For the protection of sensitive data, such as financial or personal information, strong passwords are essential. They can also assist prevent unwanted access to online accounts.</p><br></br>
-                <p>People can also benefit from employing password generators to prevent the widespread mistake of using overused or simple-to-guess passwords, which can leave them open to hacking and identity theft. For each account, people should come up with a special, complicated password to lower the possibility of identity theft.</p><br></br>
-                <p>In general, password generators are a safe and practical approach to create robust, random passwords that can help protect personal data.</p><br></br>
-                <form method="post">
-                    <label class="label" for="length">Password length (8-32):</label>
-                    <div class="slidecontainer">
-                        <input type="range" min="8" max="32" value="8" class="slider" id="length" name="length">
-                        <span id="slider-value"></span>
-                    </div>
-                    <br><br>
-                    <input type="checkbox" id="uppercase" name="uppercase" value="1">
-                    <label class="label" for="uppercase">Include uppercase letters (A-Z)</label><br>
-                    <input type="checkbox" id="lowercase" name="lowercase" value="1" checked>
-                    <label class="label" for="lowercase">Include lowercase letters (a-z)</label><br>
-                    <input type="checkbox" id="numbers" name="numbers" value="1" checked>
-                    <label class="label" for="numbers">Include numbers (0-9)</label><br>
-                    <input type="checkbox" id="special" name="special" value="1">
-                    <label class="label" for="special">Include special characters (!@#$%^&*)</label><br><br>
-                    <input type="submit" name="generate" value="Generate Password">
-                </form>
+            <video controls controlsList="nodownload" class="main_video" oncontextmenu="return false;">
                 <?php
-                if (isset($_POST['generate'])) {
-                    $length = $_POST['length'];
-                    $uppercase = isset($_POST['uppercase']);
-                    $lowercase = isset($_POST['lowercase']);
-                    $numbers = isset($_POST['numbers']);
-                    $special = isset($_POST['special']);
-                    $password = generate_password($length, $uppercase, $lowercase, $numbers, $special);
-                    echo '<script>alert("Your password is: ' . $password . '");</script>';
-                }
-
-                function generate_password($length, $uppercase, $lowercase, $numbers, $special) {
-                    $chars = '';
-                    if ($uppercase) $chars .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-                    if ($lowercase) $chars .= 'abcdefghijklmnopqrstuvwxyz';
-                    if ($numbers) $chars .= '0123456789';
-                    if ($special) $chars .= '!@#$%^&*';
-                    $password = '';
-                    for ($i = 0; $i < $length; $i++) {
-                        $password .= $chars[rand(0, strlen($chars) - 1)];
-                    }
-                    return $password;
-                }
+                    $video_src = "video/30sec.mp4"; // Replace with the URL of your video file
+                    $video_type = mime_content_type($video_src); // Get the MIME type of the video file
                 ?>
+                <source src="<?php echo $video_src ?>" type="<?php echo $video_type ?>">
+                Your browser does not support the video tag.
+            </video>
+            <br></br>
+            <div class="button-menu">
+                <div class="button-menu-list">
+                    <a href="#">Tips</a>
+                </div>
+                <div class="button-menu-list">
+                    <a href="#">Modules</a>
+                </div>
+
+                <div class="button-menu-list">
+                    <a href="#">News</a>
+                </div>
             </div>
         </main>
         <footer>
